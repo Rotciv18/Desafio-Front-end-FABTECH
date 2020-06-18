@@ -1,12 +1,23 @@
 import React from 'react';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import Proptypes from 'prop-types';
 
 import { MdEdit } from 'react-icons/md';
 
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { Creators as FlightsActions } from '../../store/ducks/flights';
 import { Container } from './styles';
 
-function FlightCard({ flight }) {
+function FlightCard({ flight, selectFlight, history }) {
+  function handleEditFlight() {
+    selectFlight(flight);
+
+    history.push('/edit');
+  }
+
   const origin = `${flight.origin.city}, ${flight.origin.country}`;
   const destiny = `${flight.destiny.city}, ${flight.destiny.country}`;
 
@@ -21,15 +32,19 @@ function FlightCard({ flight }) {
       <span>
         {flight.date}
       </span>
-      <Link style={{ textDecoration: 'none', color: '#000' }} to="/">
-        <MdEdit />
-      </Link>
+      <div>
+        <MdEdit onClick={() => handleEditFlight()} />
+      </div>
     </Container>
   );
 }
 
 FlightCard.propTypes = {
   flight: Proptypes.objectOf(Proptypes.any).isRequired,
+  selectFlight: Proptypes.func.isRequired,
+  history: Proptypes.shape({ push: Proptypes.func }).isRequired,
 };
 
-export default FlightCard;
+const mapDispatchToProps = (dispatch) => bindActionCreators(FlightsActions, dispatch);
+
+export default connect(null, mapDispatchToProps)(withRouter(FlightCard));

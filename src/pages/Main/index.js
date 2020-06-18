@@ -21,19 +21,30 @@ class Main extends Component {
   render() {
     const { flights } = this.props;
     return (
-      <Container>
-        <FlightListHeader />
-        {flights.loading ? <Loading /> : flights.flightList && flights.flightList.map((flight) => (
-          <FlightCard key={flight.id} flight={flight} />
-        ))}
-      </Container>
+      <>
+        <h1>Vôos</h1>
+        <Container>
+          <FlightListHeader />
+          {flights.loading ? (
+            <Loading />
+          ) : (
+            flights.flightList
+            && flights.flightList.map((flight) => (
+              <FlightCard key={flight.id} flight={flight} />
+            ))
+          )}
+        </Container>
+      </>
     );
   }
 }
 
 Main.propTypes = {
   getFlightsRequest: PropTypes.func.isRequired,
-  flights: PropTypes.shape({ flightList: PropTypes.array, loading: PropTypes.bool }).isRequired,
+  flights: PropTypes.shape({
+    flightList: PropTypes.array,
+    loading: PropTypes.bool,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

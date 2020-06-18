@@ -4,10 +4,13 @@ import { Container } from "./styles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import { parse } from 'date-fns';
+
 import Button from "../Button";
 
 class FlightSettings extends Component {
   state = {
+    id: "",
     originCity: "",
     originState: "",
     originCountry: "",
@@ -21,13 +24,23 @@ class FlightSettings extends Component {
   };
 
   componentDidMount() {
-    const { flight } = this.props;
+    const {flight} = this.props;
 
     if (flight) {
+      const {origin, destiny, id, date} = flight;
+
       this.setState({
-        origin: flight.origin,
-        destiny: flight.destiny,
-        date: flight.date,
+        id,
+        originCity: origin.city,
+        originState: origin.state,
+        originCountry: origin.country,
+        originCep: origin.cep,
+        destinyCity: destiny.city,
+        destinyState: destiny.state,
+        destinyCountry: destiny.country,
+        destinyCep: destiny.cep,
+        dateString: date,
+        date: parse(date, "dd/MM/yyyy HH:mm:SS", new Date())
       });
     }
   }
@@ -123,6 +136,7 @@ class FlightSettings extends Component {
   };
 
   submit = () => {
+    const {id} = this.state;
     const isAllFilled = this.checkAllInputs();
     const isSameOriginAndDestiny = this.checkDestination();
 
@@ -131,8 +145,7 @@ class FlightSettings extends Component {
         const { handleSubmit } = this.props;
         const flight = this.buildFlight();
 
-        handleSubmit(flight);
-
+        handleSubmit(flight, id);
       } else {
         alert("Destino não pode ser o mesmo que origem");
       }
@@ -153,6 +166,8 @@ class FlightSettings extends Component {
       destinyCep,
       date,
     } = this.state;
+
+    const { handleCancel } = this.props;
 
     return (
       <Container>
@@ -254,7 +269,7 @@ class FlightSettings extends Component {
 
         <div className="buttons">
           <Button label="Confirmar" handleClick={this.submit} />
-          <Button label="Cancelar" handleClick={() => {}} />
+          <Button label="Cancelar" handleClick={() => handleCancel()} />
         </div>
       </Container>
     );

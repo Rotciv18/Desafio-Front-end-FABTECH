@@ -9,12 +9,21 @@ import PropTypes from 'prop-types';
 
 import Loading from 'react-loading-animation';
 import { Creators as FlightsActions } from '../../store/ducks/flights';
+import { checkFlightAvailability } from '../../helper/availability';
 
 import FlightSettings from '../../components/FlightSettings';
 
-function Register({ registerFlightRequest, loading, history }) {
-  function registerFlight(flight) {
-    registerFlightRequest(flight, history);
+function Edit({
+  updateFlightRequest, loading, history, selectedFlight, flightList,
+}) {
+  function updateFlight(flight, id) {
+    const error = checkFlightAvailability(flight, flightList);
+
+    if (error) {
+      alert(error);
+    } else {
+      updateFlightRequest(history, flight, id);
+    }
   }
 
   function handleCancel() {
@@ -26,19 +35,23 @@ function Register({ registerFlightRequest, loading, history }) {
   ) : (
     <>
       <h1>Cadastrar</h1>
-      <FlightSettings handleSubmit={registerFlight} handleCancel={handleCancel} />
+      <FlightSettings flight={selectedFlight} handleSubmit={updateFlight} handleCancel={handleCancel} />
     </>
   );
 }
 
-Register.propTypes = {
-  registerFlightRequest: PropTypes.func.isRequired,
+Edit.propTypes = {
+  selectedFlight: PropTypes.objectOf(PropTypes.any).isRequired,
   loading: PropTypes.bool.isRequired,
   history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+  updateFlightRequest: PropTypes.func.isRequired,
+  flightList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  selectedFlight: state.flights.selectedFlight,
   loading: state.flights.loading,
+  flightList: state.flights.flightList,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(FlightsActions, dispatch);
@@ -46,4 +59,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(FlightsActions, disp
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withRouter(Register));
+)(withRouter(Edit));
