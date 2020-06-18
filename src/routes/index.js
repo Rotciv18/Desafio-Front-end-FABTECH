@@ -6,7 +6,6 @@ import Main from '../pages/Main';
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Main} />
-    <Route path="/teste" component={Main} />
   </Switch>
 );
 

@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-color: #99a0ff;
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
 `;
 
 export const LogoContainer = styled.div`

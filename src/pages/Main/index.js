@@ -1,9 +1,17 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import FlightCard from '../../components/FlightCard';
+import FlightListHeader from '../../components/FlightListHeader';
+
+import { Container } from './styles';
 
 function Main() {
-  return <div>Oizinho :)</div>;
+  return (
+    <Container>
+      <FlightListHeader />
+      <FlightCard />
+    </Container>
+  );
 }
 
 export default Main;
