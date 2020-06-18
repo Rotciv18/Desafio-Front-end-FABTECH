@@ -4,7 +4,7 @@ import { Container } from "./styles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { parse } from 'date-fns';
+import { parse, isAfter } from "date-fns";
 
 import Button from "../Button";
 
@@ -24,10 +24,10 @@ class FlightSettings extends Component {
   };
 
   componentDidMount() {
-    const {flight} = this.props;
+    const { flight } = this.props;
 
     if (flight) {
-      const {origin, destiny, id, date} = flight;
+      const { origin, destiny, id, date } = flight;
 
       this.setState({
         id,
@@ -40,7 +40,7 @@ class FlightSettings extends Component {
         destinyCountry: destiny.country,
         destinyCep: destiny.cep,
         dateString: date,
-        date: parse(date, "dd/MM/yyyy HH:mm:SS", new Date())
+        date: parse(date, "dd/MM/yyyy HH:mm:SS", new Date()),
       });
     }
   }
@@ -135,17 +135,27 @@ class FlightSettings extends Component {
     };
   };
 
+  isDateOk = () => {
+    const {date} = this.state;
+
+    return isAfter(date, new Date());
+  }
+
   submit = () => {
-    const {id} = this.state;
+    const { id } = this.state;
     const isAllFilled = this.checkAllInputs();
     const isSameOriginAndDestiny = this.checkDestination();
 
     if (isAllFilled) {
       if (!isSameOriginAndDestiny) {
-        const { handleSubmit } = this.props;
-        const flight = this.buildFlight();
+        if (this.isDateOk()) {
+          const { handleSubmit } = this.props;
+          const flight = this.buildFlight();
 
-        handleSubmit(flight, id);
+          handleSubmit(flight, id);
+        } else {
+          alert("Não é possível cadastrar um vôo para uma data que já passou");
+        }
       } else {
         alert("Destino não pode ser o mesmo que origem");
       }

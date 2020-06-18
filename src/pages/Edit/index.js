@@ -17,7 +17,7 @@ function Edit({
   updateFlightRequest, loading, history, selectedFlight, flightList,
 }) {
   function updateFlight(flight, id) {
-    const error = checkFlightAvailability(flight, flightList);
+    const error = checkFlightAvailability(flight, flightList, id);
 
     if (error) {
       alert(error);

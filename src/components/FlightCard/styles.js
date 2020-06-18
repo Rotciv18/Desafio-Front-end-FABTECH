@@ -16,7 +16,11 @@ export const Container = styled.div`
     width: 100px;
   }
 
-  div {
+  .iconButton {
     cursor: pointer;
+  }
+
+  .m-right {
+    margin-right: 3px;
   }
 `;

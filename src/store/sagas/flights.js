@@ -41,8 +41,21 @@ function* updateFlight(action) {
   }
 }
 
+function* removeFlight(action) {
+  const { id } = action;
+
+  try {
+    yield call(api.delete, `flights/${id}`);
+    yield put(FlightsActions.getFlightsRequest());
+  } catch (error) {
+    console.log(error);
+    yield put(FlightsActions.removeFlightError());
+  }
+}
+
 export default function* () {
   yield takeLatest(FlightsTypes.GET_FLIGHTS_REQUEST, getFlights);
   yield takeLatest(FlightsTypes.REGISTER_FLIGHT_REQUEST, registerFlight);
   yield takeLatest(FlightsTypes.UPDATE_FLIGHT_REQUEST, updateFlight);
+  yield takeLatest(FlightsTypes.REMOVE_FLIGHT_REQUEST, removeFlight);
 }

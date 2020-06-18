@@ -1,36 +1,20 @@
 {
   "flights": [
     {
-      "id": 1,
       "origin": {
-        "cep": 123456789,
-        "country": "Brazil",
+        "city": "Recife",
         "state": "Paraíba",
-        "city": "João Pessoa"
+        "country": "Brasil",
+        "cep": "58035110"
       },
       "destiny": {
-        "cep": 654987123,
-        "country": "Brazil",
-        "state": "Rio Grande do Norte",
-        "city": "Natal"
-      },
-      "date": "12/04/1992"
-    },
-    {
-      "id": 2,
-      "origin": {
-        "cep": 123456789,
-        "country": "Brazil",
+        "city": "Natal",
         "state": "Paraíba",
-        "city": "João Pessoa"
+        "country": "Brasil",
+        "cep": "58035110"
       },
-      "destiny": {
-        "cep": 654987123,
-        "country": "Brazil",
-        "state": "Rio Grande do Norte",
-        "city": "Natal"
-      },
-      "date": "12/04/1992"
+      "date": "18/06/2020 19:00:00",
+      "id": 1
     },
     {
       "origin": {
@@ -40,12 +24,28 @@
         "cep": "58035110"
       },
       "destiny": {
-        "city": "Fortaleza",
-        "state": "Ceará",
+        "city": "Natal",
+        "state": "Paraíba",
         "country": "Brasil",
-        "cep": "6541981561"
+        "cep": "58035110"
       },
-      "date": "25/06/2020 14:30:00",
+      "date": "18/06/2020 17:00:00",
+      "id": 2
+    },
+    {
+      "origin": {
+        "city": "João Pessoa",
+        "state": "Paraíba",
+        "country": "Brasil",
+        "cep": "58035110"
+      },
+      "destiny": {
+        "city": "Natal",
+        "state": "Paraíba",
+        "country": "Brasil",
+        "cep": "58035110"
+      },
+      "date": "18/06/2020 17:00:00",
       "id": 3
     },
     {
@@ -56,29 +56,13 @@
         "cep": "58035110"
       },
       "destiny": {
-        "city": "Recife",
-        "state": "Pernambuco",
-        "country": "Brasil",
-        "cep": "465156841"
-      },
-      "date": "19/06/2020 16:30:00",
-      "id": 4
-    },
-    {
-      "origin": {
-        "city": "João Pessoa",
+        "city": "Natalgajksbgsg",
         "state": "Paraíba",
         "country": "Brasil",
         "cep": "58035110"
       },
-      "destiny": {
-        "city": "MANO PQP",
-        "state": "dfasdfasd",
-        "country": "fasdfasdf",
-        "cep": "fasdfasdfsadf"
-      },
-      "date": "18/06/2020 17:30:00",
-      "id": 5
+      "date": "20/06/2020 20:00:00",
+      "id": 4
     }
   ]
 }

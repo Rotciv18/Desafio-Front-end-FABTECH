@@ -11,6 +11,8 @@ export const { Types, Creators } = createActions({
   updateFlightRequest: ['history', 'flight', 'id'],
   updateFlightSuccess: [''],
   updateFlightError: [''],
+  removeFlightRequest: ['id'],
+  removeFlightError: [''],
 });
 
 const INITIAL_STATE = {
@@ -72,6 +74,16 @@ const updateFlightError = (state = INITIAL_STATE) => ({
   loading: false,
 });
 
+const removeFlightRequest = (state = INITIAL_STATE) => ({
+  ...state,
+  loading: true,
+});
+
+const removeFlightError = (state = INITIAL_STATE) => ({
+  ...state,
+  loading: false,
+});
+
 export default createReducer(INITIAL_STATE, {
   [Types.GET_FLIGHTS_REQUEST]: getFlightsRequest,
   [Types.GET_FLIGHTS_SUCCESS]: getFlightsSuccess,
@@ -83,4 +95,6 @@ export default createReducer(INITIAL_STATE, {
   [Types.UPDATE_FLIGHT_REQUEST]: updateFlightRequest,
   [Types.UPDATE_FLIGHT_SUCCESS]: updateFlightSuccess,
   [Types.UPDATE_FLIGHT_ERROR]: updateFlightError,
+  [Types.REMOVE_FLIGHT_REQUEST]: removeFlightRequest,
+  [Types.REMOVE_FLIGHT_ERROR]: removeFlightError,
 });
