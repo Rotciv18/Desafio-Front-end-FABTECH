@@ -11,4 +11,8 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 0 8px 0 8px;
   color: #000;
+
+  span {
+    width: 100px;
+  }
 `;

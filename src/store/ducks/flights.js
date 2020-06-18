@@ -6,7 +6,7 @@ export const { Types, Creators } = createActions({
 });
 
 const INITIAL_STATE = {
-  flights: [],
+  flightList: [],
   selectedFlight: {},
   loading: false,
 };
@@ -18,7 +18,7 @@ const getFlightsRequest = (state = INITIAL_STATE) => ({
 
 const getFlightsSuccess = (state = INITIAL_STATE, action) => ({
   ...state,
-  flights: [
+  flightList: [
     ...action.data,
   ],
 });

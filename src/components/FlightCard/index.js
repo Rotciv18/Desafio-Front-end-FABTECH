@@ -1,20 +1,24 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
 import { MdEdit } from 'react-icons/md';
 
 import { Container } from './styles';
 
-function FlightCard() {
+function FlightCard({ flight }) {
+  const origin = `${flight.origin.city}, ${flight.origin.country}`;
+  const destiny = `${flight.destiny.city}, ${flight.destiny.country}`;
+
   return (
     <Container>
       <span>
-        Origem
+        {origin}
       </span>
       <span>
-        Destino
+        {destiny}
       </span>
       <span>
-        Data
+        {flight.date}
       </span>
       <div>
         <MdEdit />
@@ -22,5 +26,9 @@ function FlightCard() {
     </Container>
   );
 }
+
+FlightCard.propTypes = {
+  flight: Proptypes.objectOf(Proptypes.any).isRequired,
+};
 
 export default FlightCard;
