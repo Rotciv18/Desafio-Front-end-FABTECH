@@ -13,6 +13,16 @@ function* getFlights() {
   }
 }
 
+function* registerFlight(action) {
+  try {
+    yield call(api.post, 'flights', action.flight);
+    yield put(FlightsActions.registerFlightSuccess());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default function* () {
   yield takeLatest(FlightsTypes.GET_FLIGHTS_REQUEST, getFlights);
+  yield takeLatest(FlightsTypes.REGISTER_FLIGHT_REQUEST, registerFlight);
 }

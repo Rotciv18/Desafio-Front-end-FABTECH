@@ -31,6 +31,22 @@
         "city": "Natal"
       },
       "date": "12/04/1992"
+    },
+    {
+      "origin": {
+        "city": "João Pessoa",
+        "state": "Paraíba",
+        "country": "Brasil",
+        "cep": "58035110"
+      },
+      "destiny": {
+        "city": "Fortaleza",
+        "state": "Ceará",
+        "country": "Brasil",
+        "cep": "6541981561"
+      },
+      "date": "25/06/2020 14:30:00",
+      "id": 3
     }
   ]
 }
