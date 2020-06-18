@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, LogoContainer } from './styles';
+import Button from '../Button';
+
+import { Container, LogoContainer, ButtonsContainer } from './styles';
 
 function Header() {
   const imageSource = 'https://www.graphicsprings.com/filestorage/stencils/cfbbcbcba7e52c00cbdc34cd0fe67672.png?width=500&height=500';
@@ -13,6 +15,7 @@ function Header() {
           <h1>FlightTracks</h1>
         </LogoContainer>
       </Link>
+      <ButtonsContainer><Button label="oizinho" handleClick={() => console.log('clicou')} /></ButtonsContainer>
     </Container>
   );
 }

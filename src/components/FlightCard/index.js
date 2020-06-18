@@ -3,6 +3,7 @@ import Proptypes from 'prop-types';
 
 import { MdEdit } from 'react-icons/md';
 
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 function FlightCard({ flight }) {
@@ -20,9 +21,9 @@ function FlightCard({ flight }) {
       <span>
         {flight.date}
       </span>
-      <div>
+      <Link style={{ textDecoration: 'none', color: '#000' }} to="/">
         <MdEdit />
-      </div>
+      </Link>
     </Container>
   );
 }

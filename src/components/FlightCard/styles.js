@@ -15,4 +15,8 @@ export const Container = styled.div`
   span {
     width: 100px;
   }
+
+  div {
+    cursor: pointer;
+  }
 `;

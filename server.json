@@ -15,6 +15,22 @@
         "city": "Natal"
       },
       "date": "12/04/1992"
+    },
+    {
+      "id": 2,
+      "origin": {
+        "cep": 123456789,
+        "country": "Brazil",
+        "state": "Paraíba",
+        "city": "João Pessoa"
+      },
+      "destiny": {
+        "cep": 654987123,
+        "country": "Brazil",
+        "state": "Rio Grande do Norte",
+        "city": "Natal"
+      },
+      "date": "12/04/1992"
     }
   ]
 }

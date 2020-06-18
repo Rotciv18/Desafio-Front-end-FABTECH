@@ -19,7 +19,7 @@ export default createGlobalStyle`
   }
 
   button {
-    background-color: #cbc26d;
+    background-color: #a8c3b3;
     cursor: pointer;
 
     &:hover {

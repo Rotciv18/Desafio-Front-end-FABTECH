@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-color: #99a0ff;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 12px;
 `;
 
@@ -22,4 +23,8 @@ export const LogoContainer = styled.div`
   :hover {
     color: #76799a;
   }
+`;
+
+export const ButtonsContainer = styled.div`
+  margin-right: 6px;
 `;
