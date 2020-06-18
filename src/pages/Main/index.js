@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loading from 'react-loading-animation';
 import { Creators as FlightsActions } from '../../store/ducks/flights';
 
 import FlightCard from '../../components/FlightCard';
@@ -22,7 +23,7 @@ class Main extends Component {
     return (
       <Container>
         <FlightListHeader />
-        {flights.flightList && flights.flightList.map((flight) => (
+        {flights.loading ? <Loading /> : flights.flightList && flights.flightList.map((flight) => (
           <FlightCard key={flight.id} flight={flight} />
         ))}
       </Container>
@@ -32,7 +33,7 @@ class Main extends Component {
 
 Main.propTypes = {
   getFlightsRequest: PropTypes.func.isRequired,
-  flights: PropTypes.shape({ flightList: PropTypes.array }).isRequired,
+  flights: PropTypes.shape({ flightList: PropTypes.array, loading: PropTypes.bool }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
