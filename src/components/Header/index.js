@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-// import history from '../../services/history';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 
 import { Container, LogoContainer, ButtonsContainer } from './styles';
@@ -24,6 +24,10 @@ function Header({ history }) {
     </Container>
   );
 }
+
+Header.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+};
 
 // Aparentemente withRouter deve ser usado no react-router v5
 export default withRouter(Header);

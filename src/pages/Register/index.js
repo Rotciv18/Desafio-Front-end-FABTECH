@@ -1,9 +1,12 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
+import FlightSettings from '../../components/FlightSettings';
 
 function Register() {
-  return <div>Teste</div>;
+  return (
+    <FlightSettings />
+  );
 }
 
 export default Register;
