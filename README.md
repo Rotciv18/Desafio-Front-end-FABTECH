@@ -16,6 +16,6 @@ Run the application:
 
 ## What it does
 
-The app lists all registered flights, register new ones, update them and remove them. It must attend to the following rules:
-• The user can't register a new flight (or update an existing one) if there is one flight of the same destiny and the same day.
+The app lists all registered flights, register new ones, update them and remove them. It must attend to the following rules: </br>
+• The user can't register a new flight (or update an existing one) if there is one flight of the same destiny and the same day. </br>
 • The user may not register a new flight (or update an existing one) if there is any other flight that has the same date and hour.
